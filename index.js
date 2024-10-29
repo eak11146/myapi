@@ -74,4 +74,16 @@ app.post('/attractions/post', (req, res) => {
 });
 
 
+// Delete
+app.delete('/attractions/delete/:id', (req, res) => {
+    const { id } = req.params;
+    const sql = 'DELETE FROM attractions WHERE id = ?';
+    connection.query(sql, [id], (err, result) => {
+        if (err) throw err;
+        res.send('attractions deleted');
+    });
+});
+
+
+
 app.listen(process.env.PORT || 3000);
