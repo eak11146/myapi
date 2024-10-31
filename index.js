@@ -24,6 +24,17 @@ app.get('/',function(req,res,next ){
     res.json ({ msg : "Hello !!"})
 });
 
+//user tb
+app.get('/users',function(req,res,next){
+    connection.query(
+        "SELECT * FROM user",
+        function (err,results,fields){
+            res.json(results)
+        }
+    )
+})
+
+//
 
 app.get('/attractions',function(req,res,next){
     connection.query(
